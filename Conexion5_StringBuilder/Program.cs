@@ -1,6 +1,6 @@
 ﻿using System;                 // Console, STAThread
 using System.Text;            // Encoding
-using System.Windows.Forms;   // Application
+using System.Windows.Forms;
 
 namespace Conexion5_StringBuilder
 {
