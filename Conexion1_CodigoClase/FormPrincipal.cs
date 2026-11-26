@@ -14,38 +14,7 @@ namespace Conexion1_CodigoClase
             InitializeComponent();   // Crea los controles definidos en FormPrincipal.Designer.cs
         }
 
-        // =====================================================================
-        // BOTÓN 1 · PROBAR CONEXIÓN
-        // Abre y cierra la conexión de forma EXPLÍCITA (Open y Close).
-        // =====================================================================
-        private void BtnProbar_Click(object sender, EventArgs e)
-        {
-            // Pide a la clase Conexion un objeto SqlConnection (todavía cerrado).
-            SqlConnection conexion = Conexion.Crear();
-
-            try
-            {
-                conexion.Open();   // Abre la conexión: aquí se conecta realmente al servidor.
-
-                // Si llega aquí, la conexión funcionó. State muestra "Open".
-                string mensaje = $"Conexión correcta. Estado: {conexion.State} · Servidor: {conexion.DataSource} · Base: {conexion.Database}";
-                lblEstado.Text = mensaje;          // Muestra el mensaje en el formulario
-                Console.WriteLine(mensaje);        // y también en la consola
-            }
-            catch (SqlException ex)
-            {
-                // Si algo falla (servidor apagado, base inexistente, sin permiso...) llega aquí.
-                // ex.Number es el número del error de SQL Server (el "Msg" que ves en SSMS).
-                lblEstado.Text = $"No se pudo conectar (error {ex.Number}): {ex.Message}";
-                Console.WriteLine($"ERROR {ex.Number}: {ex.Message}");
-            }
-            finally
-            {
-                // finally se ejecuta SIEMPRE, haya error o no: es el lugar correcto para cerrar.
-                conexion.Close();                                                   // Cierra la conexión
-                Console.WriteLine($"Conexión cerrada. Estado: {conexion.State}");   // State ahora es "Closed"
-            }
-        }
+        
 
         // =====================================================================
         // BOTÓN 2 · LISTAR CLIENTES (consulta básica)
